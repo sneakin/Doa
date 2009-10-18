@@ -9,3 +9,5 @@ require 'initializer'
 
 require 'spec/rails'
 require 'doa'
+
+Doa.install!

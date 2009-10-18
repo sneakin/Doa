@@ -28,17 +28,8 @@ require 'facets/hash'
 # To use this, you should place the following in your `spec/spec_helper.rb`
 # after loading the module:
 #
+#   Doa.install!
 #   Doa.default_params = { :css => 'desktop', :format => 'html' }
-#
-#   module Spec
-#     module Rails
-#       module Example
-#         class ControllerExampleGroup < FunctionalExampleGroup
-#           include Doa
-#         end
-#       end
-#     end
-#   end
 #
 # =Usage
 #
@@ -54,16 +45,9 @@ require 'facets/hash'
 #         { :id => @person, :name => 'Robert' }
 #       end
 #
-#       as 'bob' do
-#         it "updates bob" do
-#           Person.should_receive(:find).with(params[:id]).and_return(@person)
-#           lambda { do_action }.should change(@person)
-#         end
-#       end
-#
-#       it "does NOT update bob" do
-#         Person.should_receive(:find).and_return(@person)
-#         lambda { do_action }.should_not change(@person)
+#       it "updates bob" do
+#         Person.should_receive(:find).with(params[:id]).and_return(@person)
+#         lambda { do_action }.should change(@person)
 #       end
 #     end
 #   end
@@ -81,6 +65,12 @@ module Doa
   def self.included(base)
     base.class_inheritable_accessor :default_params
     base.extend(ClassMethods)
+  end
+
+  def self.install!
+    Spec::Rails::Example::ControllerExampleGroup.class_eval do
+      include Doa
+    end
   end
 
   module ClassMethods
