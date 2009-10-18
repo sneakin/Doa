@@ -14,7 +14,9 @@ Use `rake rdoc` to generate the RDocs which provides a complete example in the
 Doa module. You can run the specs, which are by example, with `rake spec`.
 
 
-== License
+== Legal
+
+=== Copyright
 
 Copyright (C) 2009 SemanticGap(R)
 
@@ -38,3 +40,10 @@ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
+
+
+=== Trademarks
+
+SemanticGap is a registered trademark of Nolan Eakins. All
+rights reserved.
+
