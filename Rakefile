@@ -11,7 +11,7 @@ end
 require 'rake/rdoctask'
 
 Rake::RDocTask.new do |rdoc|
-  rdoc.rdoc_files.add("README.rdoc", "lib/*.rb")
+  rdoc.rdoc_files.add("README.rdoc", "lib/**/*.rb")
   rdoc.main = 'README.rdoc'
   rdoc.title = 'Doa'
   rdoc.rdoc_dir = 'doc/api'
