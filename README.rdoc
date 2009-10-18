@@ -14,6 +14,26 @@ Use `rake rdoc` to generate the RDocs which provides a complete example in the
 Doa module. You can run the specs, which are by example, with `rake spec`.
 
 
+== Example
+
+  require 'doa'
+
+  Doa.install!
+  Doa.default_url_params = { :format => 'xml' }
+
+  describe Controller do
+    action :show do
+      params do
+        { :id => 123 }
+      end
+
+      it "does something" do
+        doa(:page => 1)
+      end
+    end
+  end
+
+
 == Legal
 
 === Copyright
