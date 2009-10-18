@@ -1,6 +1,6 @@
 require 'spec/rake/spectask'
 
-task :default => [ :spec ]
+task :default => [ :spec, :rdoc ]
 
 desc "Run all specs in the spec directory"
 Spec::Rake::SpecTask.new(:spec) do |t|
