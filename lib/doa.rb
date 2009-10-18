@@ -27,9 +27,9 @@ require 'doa/instance_methods'
 
 # =Setup
 #
-# To use this, you should place the following in your `spec/spec_helper.rb`
-# after loading the module:
+# To use this, you should place the following in your "spec/spec_helper.rb":
 #
+#   require 'doa'
 #   Doa.install!
 #   Doa.default_params = { :css => 'desktop', :format => 'html' }
 #
@@ -49,7 +49,7 @@ require 'doa/instance_methods'
 #
 #       it "updates bob" do
 #         Person.should_receive(:find).with(params[:id]).and_return(@person)
-#         lambda { do_action }.should change(@person)
+#         lambda { doa }.should change(@person)
 #       end
 #     end
 #   end

@@ -44,9 +44,14 @@ module Doa
     # Perform the action using the parameters that result from
     # merging the context's parameters with those that were
     # passed as an argument.
-    def do_action(per_call_params = Hash.new)
+    def doa(per_call_params = Hash.new)
       send(action_method, action_name,
            self.params.recursive_merge(per_call_params))
+    end
+
+    # Alias for #doa
+    def do_action(*args)
+      doa(*args)
     end
 
     private

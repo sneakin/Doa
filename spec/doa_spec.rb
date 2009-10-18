@@ -18,7 +18,7 @@ describe Doa, :type => :controller do
 
     context 'no extra params' do
       it "assigns the params" do
-        do_action
+        doa
 
         assigns[:params][:id].should == @person
         assigns[:params][:name].should == 'Robert'
@@ -27,7 +27,7 @@ describe Doa, :type => :controller do
 
     context 'per-call params' do
       before(:each) do
-        do_action(:name => 'Bob', :age => 21)
+        doa(:name => 'Bob', :age => 21)
         @params = assigns[:params]
       end
 
