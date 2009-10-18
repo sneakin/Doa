@@ -43,7 +43,7 @@ describe Doa, :type => :controller do
 
     context 'per-context params' do
       params do
-        { :name => 'Bob', :age => 21 }
+        { 'name' => 'Bob', :age => 21 }
       end
 
       before(:each) do

@@ -130,12 +130,7 @@ module Doa
           p = Doa.default_params.try(:clone) ||
             HashWithIndifferentAccess.new
 
-          # merge in defaults from each parent class
-          supers.reverse.each do |klass|
-            dp = klass.default_params if klass.respond_to?(:default_params)
-            p.recursive_merge!(self.instance_eval(&dp) || Hash.new) if dp
-          end
-
+          p.recursive_merge!(super_params)
           p.recursive_merge!(action_params)
           p.recursive_merge!(self.instance_eval(&default_params)) if default_params
           p.recursive_merge!(shared_params)
@@ -147,8 +142,19 @@ module Doa
         # merging the context's parameters with those that were
         # passed as an argument.
         def do_action(per_call_params = Hash.new)
-          p = self.params.recursive_merge(per_call_params)
-          send(action_method, action_name, p)
+          send(action_method, action_name,
+               self.params.recursive_merge(per_call_params))
+        end
+
+        # Merges in defaults from each parent class
+        def super_params
+          supers.reverse.inject(Hash.new) do |acc, klass|
+            next acc unless klass.respond_to?(:default_params)
+
+            dp = klass.default_params
+            acc.recursive_merge!(self.instance_eval(&dp) || Hash.new) if dp
+            acc
+          end
         end
       end
     end
@@ -159,9 +165,9 @@ module Doa
   # Given an action name such as :create, it returns the expected
   # HTTP method.
   def infer_method(action)
-    case action.to_sym
-    when :update then :put
-    when :create then :post
+    case action
+    when 'update' then :put
+    when 'create' then :post
     else :get
     end
   end
