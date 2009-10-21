@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".gitignore",
+     "Doa.gemspec",
      "README.rdoc",
      "Rakefile",
      "VERSION",
