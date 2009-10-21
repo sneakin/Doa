@@ -17,3 +17,17 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_dir = 'doc/api'
   rdoc.options << '--line-numbers' << '--inline-source'
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "Doa"
+    gemspec.summary = "The Tester"
+    gemspec.description = "rSpec controller macros"
+    gemspec.email = "suppert@semanticgap.com"
+    gemspec.homepage = "http://github.com/sneakin/Doa"
+    gemspec.authors = [ "Nolan Eakins <sneakin@semanticgap.com>" ]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
