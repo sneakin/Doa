@@ -28,6 +28,7 @@ begin
     gemspec.homepage = "http://github.com/sneakin/Doa"
     gemspec.authors = [ "Nolan Eakins <sneakin@semanticgap.com>" ]
   end
+  Jeweler::GemcutterTasks.new
 rescue LoadError
   puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end

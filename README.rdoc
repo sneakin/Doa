@@ -8,13 +8,25 @@ the params to be used in a given context, and the means to easily call the
 action using those params.
 
 
+== Installation
+
+From Gemcutter.org:
+
+  gem tumble # for Gemcutter
+  sudo gem install Doa
+
+Locally:
+
+  rake build
+  sudo gem install pkg/*.gem
+
+
 == Usage
 
 Use `rake rdoc` to generate the RDocs which provides a complete example in the
 Doa module. You can run the specs, which are by example, with `rake spec`.
 
-
-== Example
+=== Example
 
   require 'doa'
 
