@@ -33,10 +33,10 @@ module Doa
       p = Doa.default_params.try(:clone) ||
         HashWithIndifferentAccess.new
 
-      p.recursive_merge!(super_params)
-      p.recursive_merge!(action_params)
-      p.recursive_merge!(self.instance_eval(&default_params)) if default_params
-      p.recursive_merge!(shared_params)
+      p.deep_merge!(super_params)
+      p.deep_merge!(action_params)
+      p.deep_merge!(self.instance_eval(&default_params)) if default_params
+      p.deep_merge!(shared_params)
 
       @_params = HashWithIndifferentAccess.new(p)
     end
@@ -46,7 +46,7 @@ module Doa
     # passed as an argument.
     def doa(per_call_params = Hash.new)
       send(action_method, action_name,
-           self.params.recursive_merge(per_call_params))
+           self.params.deep_merge(per_call_params))
     end
 
     # Alias for #doa
@@ -62,7 +62,7 @@ module Doa
         next acc unless klass.respond_to?(:default_params)
 
         dp = klass.default_params
-        acc.recursive_merge!(self.instance_eval(&dp) || Hash.new) if dp
+        acc.deep_merge!(self.instance_eval(&dp) || Hash.new) if dp
         acc
       end
     end
